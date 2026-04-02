@@ -1,14 +1,14 @@
 import os
 
 
-def test_tmpfile(tmpfile):
-    with tmpfile() as filename:
-        assert os.path.exists(filename)
+def test_tmpfile(mktmpfile):
+    filename = mktmpfile()
+    assert os.path.exists(filename)
 
-    with tmpfile(name='foo.txt') as filename:
-        assert os.path.exists(filename)
-        assert os.path.basename(filename) == 'foo.txt'
+    filename = mktmpfile(name='foo.txt')
+    assert os.path.exists(filename)
+    assert os.path.basename(filename) == 'foo.txt'
 
-    with tmpfile(content='foo bar baz') as filename:
-        with open(filename) as f:
-            assert f.read() == 'foo bar baz'
+    filename = mktmpfile(content='foo bar baz')
+    with open(filename) as f:
+        assert f.read() == 'foo bar baz'
