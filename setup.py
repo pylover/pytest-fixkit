@@ -16,7 +16,8 @@ with open(
 
 
 dependencies = [
-    'pytest'
+    'pytest',
+    'redis',
 ]
 
 
