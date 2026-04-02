@@ -1,3 +1,6 @@
+PYDEPS_COMMON += \
+	'coveralls' 
+
 # Assert the python-makelib version
 PYTHON_MAKELIB_VERSION_REQUIRED = 2.5.2
 
