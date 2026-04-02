@@ -1,0 +1,16 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# pytest
+.pytest_cache/
+
+# C extensions
+*.so
+
+# Vim
+.*.sw[op]
+
+# python-makelib
+activate.sh
