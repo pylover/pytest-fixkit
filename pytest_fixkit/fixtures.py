@@ -1,4 +1,5 @@
 import os
+import socket
 import shutil
 import tempfile
 import contextlib
@@ -14,6 +15,7 @@ __all__ = [
     'mktmptree',
     'chdir',
     'redis',
+    'freetcpport'
 ]
 
 
@@ -152,6 +154,7 @@ def redis():
             hashtable[field] = value
 
         def hget(self, key, field):
+
             hashtable = self.maindict.setdefault(key, {})
             return hashtable[field].encode()
 
@@ -164,6 +167,16 @@ def redis():
 
     with mock.patch('redis.Redis', new=RedisMock) as p:
         yield p
+
+
+@pytest.fixture
+def freetcpport():
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    try:
+        s.bind(('localhost', 0))
+        return s.getsockname()[1]
+    finally:
+        s.close()
 
 
 # @pytest.fixture()
