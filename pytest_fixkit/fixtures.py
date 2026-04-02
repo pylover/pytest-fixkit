@@ -9,6 +9,7 @@ import pytest
 
 
 __all__ = [
+    'cicd',
     'tmpdir',
     'mktmpdir',
     'mktmpfile',
@@ -17,6 +18,11 @@ __all__ = [
     'redis',
     'freetcpport'
 ]
+
+
+@pytest.fixture
+def cicd():
+    return os.environ.get('CI') and os.environ.get('GITHUB_RUN_ID')
 
 
 @pytest.fixture
