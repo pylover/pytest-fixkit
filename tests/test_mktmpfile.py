@@ -1,7 +1,7 @@
 import os
 
 
-def test_tmpfile(mktmpfile):
+def test_mktmpfile(mktmpfile):
     filename = mktmpfile()
     assert os.path.exists(filename)
 
