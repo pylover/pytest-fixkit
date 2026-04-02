@@ -37,11 +37,11 @@ setup(
         include=['pytest_fixkit'],
         exclude=['tests']
     ),
-    # entry_points={
-    #     'pytest11': [
-    #         'fixkit = pytest_fixkit'
-    #     ]
-    # },
+    entry_points={
+        'pytest11': [
+            'fixkit = pytest_fixkit'
+        ]
+    },
     classifiers=[
         'Framework :: Pytest',
         'Development Status :: 5 - Production/Stable',
