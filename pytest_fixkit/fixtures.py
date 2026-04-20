@@ -1,4 +1,5 @@
 import os
+import io
 import socket
 import shutil
 import tempfile
@@ -16,7 +17,8 @@ __all__ = [
     'mktmptree',
     'chdir',
     'redis',
-    'freetcpport'
+    'freetcpport',
+    'fileio',
 ]
 
 
@@ -183,6 +185,20 @@ def freetcpport():
         return s.getsockname()[1]
     finally:
         s.close()
+
+
+@pytest.fixture()
+def fileio():
+    def create(name, content):
+        if isinstance(content, bytes):
+            f = io.BytesIO(content)
+        else:
+            f = io.StringIO(content)
+
+        f.name = name
+        return f
+
+    return create
 
 
 # @pytest.fixture()
