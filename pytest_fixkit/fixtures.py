@@ -55,7 +55,7 @@ def mktmpdir():
 def mktmpfile(mktmpdir):
     files = []
 
-    def make(name=None, content=None):
+    def make(content=None, name=None):
         if not name:
             name = tempfile.mktemp()
 
@@ -189,13 +189,15 @@ def freetcpport():
 
 @pytest.fixture()
 def fileio():
-    def create(name, content):
+    def create(content, name=None):
         if isinstance(content, bytes):
             f = io.BytesIO(content)
         else:
             f = io.StringIO(content)
 
-        f.name = name
+        if name:
+            f.name = name
+
         return f
 
     return create
