@@ -27,7 +27,7 @@ setup(
     author='Vahid Mardani',
     author_email='vahid.mardani@gmail.com',
     url='http://github.com/pylover/pytest-fixkit',
-    description='A very micro http framework.',
+    description='A set of useful pytest fixtures that I use everyday.',
     long_description=open('README.md').read(),
     long_description_content_type='text/markdown',  # This is important!
     install_requires=dependencies,
